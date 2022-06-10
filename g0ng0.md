@@ -1,7 +1,7 @@
 ---
-title: /peter
+title: /g0ng0
 layout: page
-permalink: /peter
+permalink: /g0ng0
 ---
 
 
