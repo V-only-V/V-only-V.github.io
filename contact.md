@@ -13,4 +13,4 @@ permalink: /contact
   <input type="submit" value="[ submit ]">
 </form>
 
-<br /><br />(This is a demo site, the form doesn't work - If you want to contact with me this is my email. Written by <a href="vicdavrivlop@gmail.com">Victor David</a>.)
+<br /><br />(This is a demo site, the form doesn't work - If you want to contact with me this is my email. Written by <a href="email:vicdavrivlop@gmail.com">Victor David</a>.)
