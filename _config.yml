@@ -10,7 +10,7 @@ header_pages:
 
 style: dark
 
-footer: 'Sorry I don't have social networks and neither should you!'
+footer: 'Sorry I don`t have social networks and neither should you!'
 
 # Build settings
 markdown: kramdown
