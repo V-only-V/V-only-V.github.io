@@ -12,6 +12,20 @@
 
 ### Arch Linux Requirements
 
+### Minimum
+
+- x86_64 / 64 bit
+- 512 MB Ram
+- 800 MB Disk Space
+- Internet Connection
+
+### Recommended
+
+- x86_64 / 64 bit
+- 2 GB Ram
+- 20 GB Disk Space
+- Internet Connection
+
 ### Previous knowledge
 
 - Operating system
