@@ -82,11 +82,13 @@
 💡 List all keyboard layouts
 
 </aside>
+<br>
 
-```markdown
+``````
 ls /usr/share/kbd/keymaps/**/*.map.gz
-```
+``````
 
+<br>
 <aside>
 💡 load your keyboard with
 
@@ -95,6 +97,7 @@ ls /usr/share/kbd/keymaps/**/*.map.gz
 ```html
 loadkeys "yourdistribution"
 ```
+<br>
 <aside>
 💡 You have to put the 'loadkeys' followed by the name of the file that you listed without the .map.gz
 
@@ -104,6 +107,7 @@ loadkeys "yourdistribution"
 💡 to load some keyboards
 
 </aside>
+<br>
 
 ```markdown
 > azerty
@@ -133,11 +137,13 @@ loadkeys dvorak
 💡 To verify the boot mode, list the efivars directory
 
 </aside>
+<br>
 
 ```markdown
 ls /sys/firmware/efi/efivars
 ```
 
+<br>
 <aside>
 💡 if the command shows the directory without error, then the system is booted in UEFI mode. if the directory does not exist, the system may be booted in BIOS mode. If the system did not in the mode you desired, refer to your motherboard’s manual
 
@@ -154,6 +160,7 @@ ls /sys/firmware/efi/efivars
 💡 Ensure your network interface is listed and enabled, for example with ip-link
 
 </aside>
+<br>
 
 ```markdown
 ip link
@@ -168,21 +175,25 @@ ip link
 💡 The connection may be verified with ping
 
 </aside>
+<br>
 
 ```markdown
 ping archlinux.orch
 ```
 
+<br>
 <aside>
 💡 You can also ping another web site or a dns
 
 </aside>
+<br>
 
 ```markdown
 ping 8.8.8.8   
 ping www.google.com
 ```
 
+<br>
 <aside>
 💡 ctrl + c kill ping
 
@@ -202,10 +213,12 @@ ping www.google.com
 timedatectl set-ntp true
 ```
 
+<br>
 <aside>
 💡 To check the service status, use:
 
 </aside>
+<br>
 
 ```
 timedatectl status
@@ -243,16 +256,19 @@ fdisk -l
 fdisk /dev/the_disk_to_be_partitioned
 ```
 
+<br>
 <aside>
 💡 Note: if the disk does not show up, make sure the disk controller is not in RAID mode
 
 </aside>
 
+<br>
 <aside>
 💡 if the disk from which you want to boot already has an EFI system partition, do not create another one, but use the existing partition instead
 
 </aside>
 
+<br>
 <aside>
 💡 Swap space can be set on a swap file for files systems supperting it
 
@@ -273,6 +289,7 @@ fdisk /dev/the_disk_to_be_partitioned
 | [SWAP] | /dev/swap_partition | Linux swap | More than 512 MIB |
 | /mnt | /dev/root_partition | Linux | Remainder of the device |
 
+<br>
 <aside>
 💡 These tables were extracted from the official Arch Linux web site.
 
@@ -287,30 +304,39 @@ fdisk /dev/the_disk_to_be_partitioned
 
 > For example, to create an EXT4 file system on /dev/root_partition, run:
 > 
+<br>
 
 ```markdown
 mkfs.ext4 /dev/root_partition
 ```
 
+<br>
+
 > if you created a partition for swap, initialize it with mkswap
 > 
+<br>
 
 ```markdown
 mkswap /dev/swap_partition
 ```
 
+<br>
 <aside>
 💡 Note: For stacked block devices replace /dev/*_partition with the appropriate block dvice path
 
 </aside>
 
+<br>
+
 > If you created an EFI system partition, format it to FAT32 using mkfs.fat
 > 
 
+<br>
 <aside>
 ❗ Warning: Only format the EFI system partition if you created it during the partitioning step. If there already was an EFI system partition on disk beforehand, reformatting it can destroy the boot leaders of other installed operating systems
 
 </aside>
+<br>
 
 ```markdown
 mkfs.fat -F 32 /dev/efi_system_partition
@@ -322,23 +348,30 @@ mkfs.fat -F 32 /dev/efi_system_partition
 
 > Mount the root volume to /mnt. For example, if the root volume is /dev/root_partition:
 > 
+<br>
 
 ```markdown
 mount /dev/root_partition /mnt
 ```
+
+<br>
 
 > Create any remainig mount points ( such as /mnt/efi ) using mkdir and mount their correspoding volumes
 > 
 
 > For UEFI systems, mount the EFI system partition:
 > 
+<br>
 
 ```markdown
 mount /dev/efi_system_partition /mnt/boot
 ```
 
+<br>
+
 > If you created a swap volume, enable it with swapon
 > 
+<br>
 
 ```markdown
 swapon /dev/swap_partition
@@ -352,11 +385,13 @@ swapon /dev/swap_partition
 
 > Packages to be installed must be downloaded from mirror servers, which are defined in /etc/pacman.d/mirrorlist . On the live system, after connecting to the internet, reflector updates the mirror list by choosing 20 most recently synchonized HTTPS mirrors and sorting them by download rate
 > 
+<br>
 
 ### Install essential packages
 
 > Use the pacstrap script to install the base package, Linux kernel and firmware for common hardware
 > 
+<br>
 
 ```markdown
 pacstrap /mnt base linux linux-firmware
@@ -368,6 +403,7 @@ pacstrap /mnt base linux linux-firmware
 
 > Generate an fstab file (use -U or -L to define by UUID or abels, respectively):
 > 
+<br>
 
 ```markdown
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -377,6 +413,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 > Change root into the new system:
 > 
+<br>
 
 ```markdown
 arch-chroot /mnt
@@ -386,13 +423,17 @@ arch-chroot /mnt
 
 > Set the time zone:
 > 
+<br>
 
 ```markdown
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 ```
 
+<br>
+
 > Run hwclock to generate /etc/adjtime
 > 
+<br>
 
 ```markdown
 hwclock --systohc
@@ -402,26 +443,33 @@ hwclock --systohc
 
 > Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed locale. Generate the locales by running:
 > 
+<br>
 
 ```markdown
 locale-gen
 ```
 
+<br>
+
 > Create the locale.conf file, and set the LANG varuable accordingly:
 > 
+<br>
 
 ```markdown
 /etc/locale.conf
-----------------
+***
 LANG=en_US.UTF-8
 ```
 
+<br>
+
 > If you set the console keyboard layout, make the changes persistent in vconsole.conf
 > 
+<br>
 
 ```markdown
 /etc/vconsole.conf
-------------------
+***
 KEYMAP=de-latin1
 ```
 
@@ -429,10 +477,11 @@ KEYMAP=de-latin1
 
 > Create the hostname file
 > 
+<br>
 
 ```markdown
 /etc/hostname
--------------
+***
 myhostname
 ```
 
@@ -440,6 +489,7 @@ myhostname
 
 > Set the root password:
 > 
+<br>
 
 ```markdown
 passwd
@@ -449,10 +499,13 @@ passwd
 
 > Exit the chroot environment by typing:
 > 
+<br>
 
 ```markdown
 exit
 ```
+
+<br>
 
 > Optionally manually unmount all the partitions with:
 > 
@@ -460,6 +513,8 @@ exit
 ```markdown
 umount -R /mnt
 ```
+
+<br>
 
 > Restart the machine
 >
