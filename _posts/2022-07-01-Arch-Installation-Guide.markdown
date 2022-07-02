@@ -2,29 +2,29 @@
 
 ## Arch Linux is a Linux distribution. A simple, light and flexible distribution. It follows the KISS (Keep It Simple, Stupid) principle.
 
-### Website Official of Arch Linux for more information
+## Website Official of Arch Linux for more information
 
 [Arch Linux](https://archlinux.org/)
 
 ---
 
-### Arch Linux Requirements
+# Arch Linux Requirements
 
-### Minimum
+## Minimum
 
 - x86_64 / 64 bit
 - 512 MB Ram
 - 800 MB Disk Space
 - Internet Connection
 
-### Recommended
+## Recommended
 
 - x86_64 / 64 bit
 - 2 GB Ram
 - 20 GB Disk Space
 - Internet Connection
 
-### Previous knowledge
+## Previous knowledge
 
 - Operating system
 - Linux distributions
@@ -32,18 +32,18 @@
 
 ---
 
-## Installation
+# Installation
 
-### Downloading ISO
+## Downloading ISO
 
 > Arch Linux Downloads
 > 
 
-[Arch Linux](https://archlinux.org/download/)
+[Arch Linux Downloads](https://archlinux.org/download/)
 
 ---
 
-### Prepare an installation medium
+## Prepare an installation medium
 
 > The installation image can be supplied to the target machine via a USB flash drive
 > 
@@ -55,6 +55,7 @@
 
 [balenaEtcher - Flash OS images to SD cards & USB drives](https://www.balena.io/etcher/)
 
+<br>
 <aside>
 💡 Note: Arch Linux installation images do not support Secure Boot. You will need to disable Secure Boot to boot the installation medium, if desired, Secure Boot can be set up after completing the installation
 
@@ -71,8 +72,9 @@
 
 ---
 
-### Set the console keyboard layout
+## Set the console keyboard layout
 
+<br>
 <aside>
 💡 The default console keymap is US
 
@@ -93,6 +95,7 @@ ls /usr/share/kbd/keymaps/**/*.map.gz
 💡 load your keyboard with
 
 </aside>
+<br>
 
 ```html
 loadkeys "yourdistribution"
@@ -124,6 +127,7 @@ loadkeys de-latin1
 loadkeys dvorak
 ```
 
+<br>
 <aside>
 💡 Console fonts are located in /usr/share/kbd/consolefonts/ and can likewise be set with setfont
 
@@ -133,6 +137,7 @@ loadkeys dvorak
 
 ## Verify the boot mode
 
+<br>
 <aside>
 💡 To verify the boot mode, list the efivars directory
 
@@ -165,6 +170,7 @@ ls /sys/firmware/efi/efivars
 ```markdown
 ip link
 ```
+<br>
 
 - Connect to the network
     - Ethernet—plug in the cable
@@ -198,6 +204,7 @@ ping www.google.com
 💡 ctrl + c kill ping
 
 </aside>
+<br>
 
  * If you are going to install the operating system on a laptop I recommend that you connect the Ethernet cable to it but if not, visit [https://wiki.archlinux.org/title/Iwd#iwctl](https://wiki.archlinux.org/title/Iwd#iwctl) there is a lot of information on how you are going to do with the WIFI
 
@@ -208,6 +215,7 @@ ping www.google.com
 
 > Use timedatectl to ensure the system clock is accurate:
 > 
+<br>
 
 ```markdown
 timedatectl set-ntp true
@@ -228,6 +236,8 @@ timedatectl status
 
 ## Partition the disk
 
+<br>
+
 > cfdisk   |   It is a graphical terminal program to make partitioning much more simple
 <br>
 > fdisk   |   This is the manual way so to speak to make the partitions
@@ -235,10 +245,13 @@ timedatectl status
 
 > When recognize by the live system, disks are assigned to a block device such as /dev/sda , /dev/nvme0n1 or /dev/mmcblk0. To identify these devices, use lsblk or fdisk
 > 
+<br>
 
 ```markdown
 fdisk -l
 ```
+
+<br>
 
 > One partition for the root directory /
 > 
@@ -251,6 +264,7 @@ fdisk -l
 
 > Use fdisk or parted to modify partition tables. For example:
 > 
+<br>
 
 ```markdown
 fdisk /dev/the_disk_to_be_partitioned
@@ -273,8 +287,9 @@ fdisk /dev/the_disk_to_be_partitioned
 💡 Swap space can be set on a swap file for files systems supperting it
 
 </aside>
+<br>
 
-### UEFI with GPT
+## UEFI with GPT
 
 | Mount point | Partition | Partition type | Suppested size |
 | --- | --- | --- | --- |
@@ -282,7 +297,7 @@ fdisk /dev/the_disk_to_be_partitioned
 | [SWAP] | /dev/swap_partition | Linux swap | More than 512 MIB |
 | /mnt | /dev/root_partition | Linux | Remainder of the device |
 
-### BIOS with MBR
+## BIOS with MBR
 
 | Mount point | Partition | Partition type | Suggested size |
 | --- | --- | --- | --- |
@@ -379,15 +394,19 @@ swapon /dev/swap_partition
 
 ---
 
-## Installation
+# Installation
 
-### Select the mirrors
+## Select the mirrors
+
+<br>
 
 > Packages to be installed must be downloaded from mirror servers, which are defined in /etc/pacman.d/mirrorlist . On the live system, after connecting to the internet, reflector updates the mirror list by choosing 20 most recently synchonized HTTPS mirrors and sorting them by download rate
 > 
 <br>
 
-### Install essential packages
+## Install essential packages
+
+<br>
 
 > Use the pacstrap script to install the base package, Linux kernel and firmware for common hardware
 > 
@@ -397,9 +416,9 @@ swapon /dev/swap_partition
 pacstrap /mnt base linux linux-firmware
 ```
 
-## Configure the system
+# Configure the system
 
-### Fstab
+## Fstab
 
 > Generate an fstab file (use -U or -L to define by UUID or abels, respectively):
 > 
@@ -409,7 +428,7 @@ pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-### Chroot
+## Chroot
 
 > Change root into the new system:
 > 
@@ -419,7 +438,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ```
 
-### Time zone
+## Time zone
 
 > Set the time zone:
 > 
