@@ -1,5 +1,3 @@
-# Post I
-
 # Arch Linux Installation Guide by g0ng0
 
 ## Arch Linux is a Linux distribution. A simple, light and flexible distribution. It follows the KISS (Keep It Simple, Stupid) principle.
@@ -61,11 +59,12 @@
 💡 Note: Arch Linux installation images do not support Secure Boot. You will need to disable Secure Boot to boot the installation medium, if desired, Secure Boot can be set up after completing the installation
 
 </aside>
-
+<br>
 <aside>
 ⚠️ Attention at this point you are about to start installing Arch, you must have a backup on your computer or back up all your files in case something goes wrong, this if you are going to install it on hardware. If you are going to install it in a virtual machine there is nothing to worry about.
 
 </aside>
+<br>
 
 > You have to insert the USB into your computer, reboot it and enter the bios of your computer. Once there you have to go to the boot section and put the USB first in the boot list, then save and exit. This will boot the Arch Linux ISO.
 > 
@@ -78,7 +77,7 @@
 💡 The default console keymap is US
 
 </aside>
-
+<br>
 <aside>
 💡 List all keyboard layouts
 
@@ -96,29 +95,28 @@ ls /usr/share/kbd/keymaps/**/*.map.gz
 ```html
 loadkeys "yourdistribution"
 ```
-
 <aside>
 💡 You have to put the 'loadkeys' followed by the name of the file that you listed without the .map.gz
 
 </aside>
-
+<br>
 <aside>
 💡 to load some keyboards
 
 </aside>
 
 ```markdown
-# azerty
+> azerty
 loadkeys azerty
 ```
 
 ```markdown
-# latin
+> latin
 loadkeys de-latin1
 ```
 
 ```markdown
-# dvorak
+> dvorak
 loadkeys dvorak
 ```
 
@@ -190,10 +188,8 @@ ping www.google.com
 
 </aside>
 
-<aside>
-▫️ Si vas a instalar el sistema operativo en una laptop te recomiendo que le conectes el cable de Ethernet pero si no, visita "[https://wiki.archlinux.org/title/Iwd#iwctl](https://wiki.archlinux.org/title/Iwd#iwctl)" hay mucha informacion de como le vas a hacer con el WIFI
+ * If you are going to install the operating system on a laptop I recommend that you connect the Ethernet cable to it but if not, visit [https://wiki.archlinux.org/title/Iwd#iwctl](https://wiki.archlinux.org/title/Iwd#iwctl) there is a lot of information on how you are going to do with the WIFI
 
-</aside>
 
 ---
 
@@ -207,16 +203,21 @@ timedatectl set-ntp true
 ```
 
 <aside>
-💡 To check the service status, use timedatectl status
+💡 To check the service status, use:
 
 </aside>
+
+```
+timedatectl status
+```
 
 ---
 
 ## Partition the disk
 
-> cfdisk   |   Es un programa de terminal grafico para hacer las particione mucho mas sensilla
-fdisk   |   Esta es la manera manual por asi decirlo de hacer las particiones
+> cfdisk   |   It is a graphical terminal program to make partitioning much more simple
+<br>
+> fdisk   |   This is the manual way so to speak to make the partitions
 > 
 
 > When recognize by the live system, disks are assigned to a block device such as /dev/sda , /dev/nvme0n1 or /dev/mmcblk0. To identify these devices, use lsblk or fdisk
