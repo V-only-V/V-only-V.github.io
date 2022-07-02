@@ -50,6 +50,7 @@
 
 > Once you have the ISO downloaded you have to prepare it on an optical disk or USB, I recommend better by USB, you have to burn the ISO on the USB with a program. I recommend two.
 > 
+<br>
 
 [Rufus](https://rufus.ie/en/)
 
@@ -177,6 +178,7 @@ ip link
     - WI-FI—authenticate to the wireless network using iwctl
     - Mobile broadband modem—connect to the mobile network with the mmcli utility
 
+<br>
 <aside>
 💡 The connection may be verified with ping
 
